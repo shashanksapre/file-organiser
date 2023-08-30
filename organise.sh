@@ -33,30 +33,31 @@ image_extensions=("jpg" "jpeg" "png")
 video_extensions=("mp4" "mpeg" "mkv")
 document_extensions=("doc" "docx" "ppt" "pptx" "xls" "xlsx" "tx" "pdf" "odt" "ods" "odp" "csv")
 music_extensions=("mp3" "wav" "aac")
-coding_extensions=("sql" "yaml" "yml" "js" "ts" "py" "c" "html" "xml" "json" "md" "sh")
+coding_extensions=("sql" "yaml" "yml" "js" "ts" "c" "html" "xml" "json" "md")
 
 # Set untouchable files
 os_files=(".DS_Store" ".directory")
+script_files=("py" "sh")
 
 # Iterate through files
 for file in *; do 
   # Skip folders/directories and os specific files
-  if [ -f "$file" ] && ! [[ " ${os_files[*]} " =~ " ${file} " ]]; then 
+  if [ -f "$file" ] && ! [[ " ${os_files[*]} " =~ " ${file} " ]] && ! [[ " ${script_files[*]} " =~ " ${file##*.} " ]]; then
     # Grab extension of files
     ext=${file##*.}
     # Move file into appropriate folder/directory
     if [[ " ${image_extensions[*]} " =~ " ${ext} " ]]; then
-      mv $file "Images"
+      mv "$file" "Images"
     elif [[ " ${video_extensions[*]} " =~ " ${ext} " ]]; then
-      mv $file "Videos"
+      mv "$file" "Videos"
     elif [[ " ${document_extensions[*]} " =~ " ${ext} " ]]; then
-      mv $file "Documents"
+      mv "$file" "Documents"
     elif [[ " ${music_extensions[*]} " =~ " ${ext} " ]]; then
-      mv $file "Music"
+      mv "$file" "Music"
     elif [[ " ${coding_extensions[*]} " =~ " ${ext} " ]]; then
-      mv $file "Coding"
+      mv "$file" "Coding"
     else
-      mv $file "Others"
+      mv "$file" "Others"
     fi
   fi
 done
