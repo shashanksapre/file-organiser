@@ -4,8 +4,6 @@ import shutil
 # Get current working directory
 cwd = os.getcwd()
 
-print(os.path.join(cwd, "Images"))
-
 # Create sub directories/folders if not present
 if not os.path.exists(os.path.join(cwd, "Images")):
     os.makedirs("Images")
@@ -20,6 +18,7 @@ if not os.path.exists(os.path.join(cwd, "Coding")):
 if not os.path.exists(os.path.join(cwd, "Others")):
     os.makedirs("Others")
 
+# Set extensions
 image_extensions = ['.jpg', '.jpeg', '.png']
 video_extensions = ['.mp4', '.mpeg', '.mkv']
 document_extensions = ['.doc', '.docx', '.ppt', '.pptx',
@@ -28,10 +27,14 @@ music_extensions = ['.mp3', '.wav', '.aac']
 coding_extensions = ['.sql', '.yaml', '.yml', '.js',
                      '.ts', '.py', '.c', '.html', '.xml' '.json']
 
+# Iterate through files
 for file in os.listdir(cwd):
+    # Skip folders/directories and os specific files
     if os.path.isdir(os.path.join(cwd, file)) or file == '.directory' or file == '.DS_Store':
         continue
+    # Grab extension of files
     ext = os.path.splitext(file)[1].lower()
+    # Move file into appropriate folder/directory
     if ext in image_extensions:
         shutil.move(os.path.join(cwd, file), os.path.join(cwd, "Images"))
     elif ext in video_extensions:
