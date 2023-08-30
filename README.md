@@ -4,7 +4,7 @@ Simple script(s) to organise files in their respective folders.
 
 Credit for python file: https://www.youtube.com/watch?v=te3dabZ1Yts
 
-from which I took inspiration to create bash script. Might work on a powershell or batch file for windows
+from which I took inspiration to create bash script. I also went ahead and created a powershell script.
 
 Notes:
 
@@ -29,3 +29,9 @@ Notes:
      2.a. Open terminal window, navigate to the directory where file is present, and issue following command `chmod +x organise.sh`
 
   You can then simply double-clik on the file to run it or run it from the terminal by issuing the command `./organise.sh`
+
+- For organise.ps1 file you can simply right-click on the file and click on 'Run with Powershell'
+
+  ![Alt text](/assets/powershell-1.png)
+
+  or open a powershell window, navigate to the file, and execute the command `.\organise.ps1`
