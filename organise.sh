@@ -1,64 +1,43 @@
 #!/bin/bash
 
-# Get working directory/folder
-PWD=`pwd`
+# Directories to create
+directories=("Images" "Videos" "Documents" "Music" "Coding" "Others")
 
-# Create sub directories/folders if not present
-if ! [[ -d "$PWD/Images" ]] ; then
-  mkdir "Images"
-fi
+# Extensions
+declare -A extensions=(
+  ["Images"]="jpg jpeg png"
+  ["Videos"]="mp4 mpeg mkv"
+  ["Documents"]="doc docx ppt pptx xls xlsx tx pdf odt ods odp csv"
+  ["Music"]="mp3 wav aac"
+  ["Coding"]="sql yaml yml js ts c html xml json md"
+)
 
-if ! [[ -d "$PWD/Videos" ]] ; then
-  mkdir "Videos"
-fi
-
-if ! [[ -d "$PWD/Documents" ]] ; then
-  mkdir "Documents"
-fi
-
-if ! [[ -d "$PWD/Music" ]] ; then
-  mkdir "Music"
-fi
-
-if ! [[ -d "$PWD/Coding" ]] ; then
-  mkdir "Coding"
-fi
-
-if ! [[ -d "$PWD/Others" ]] ; then
-  mkdir "Others"
-fi
-
-# Set extensions
-image_extensions=("jpg" "jpeg" "png")
-video_extensions=("mp4" "mpeg" "mkv")
-document_extensions=("doc" "docx" "ppt" "pptx" "xls" "xlsx" "tx" "pdf" "odt" "ods" "odp" "csv")
-music_extensions=("mp3" "wav" "aac")
-coding_extensions=("sql" "yaml" "yml" "js" "ts" "c" "html" "xml" "json" "md")
-
-# Set untouchable files
+# Untouchable files
 os_files=(".DS_Store" ".directory")
-script_files=("py" "sh" "ps1")
+script_extensions=("py sh ps1")
 
-# Iterate through files
+# Create directories if they don't exist
+for dir in "${directories[@]}"; do
+  mkdir -p "$dir"
+done
+
+# Organize files
 for file in *; do
-  # Grab extension of files
-  lower=`echo $file | awk '{print tolower($0)}'`
-  ext=${lower##*.}
-  # Skip folders/directories and os specific files
-  if [ -f "$file" ] && ! [[ " ${os_files[*]} " =~ " ${file} " ]] && ! [[ " ${script_files[*]} " =~ " ${ext} " ]]; then
-    # Move file into appropriate folder/directory
-    if [[ " ${image_extensions[*]} " =~ " ${ext} " ]]; then
-      mv "$file" "Images"
-    elif [[ " ${video_extensions[*]} " =~ " ${ext} " ]]; then
-      mv "$file" "Videos"
-    elif [[ " ${document_extensions[*]} " =~ " ${ext} " ]]; then
-      mv "$file" "Documents"
-    elif [[ " ${music_extensions[*]} " =~ " ${ext} " ]]; then
-      mv "$file" "Music"
-    elif [[ " ${coding_extensions[*]} " =~ " ${ext} " ]]; then
-      mv "$file" "Coding"
-    else
-      mv "$file" "Others"
+  if [ -f "$file" ]; then
+    lower="${file,,}"  # Convert to lowercase
+    ext="${lower##*.}"
+    if ! [[ " ${os_files[*]} " =~ " ${lower} " ]] && ! [[ " ${script_extensions[*]} " =~ " ${ext} " ]]; then
+      moved=false
+      for dir in "${!extensions[@]}"; do
+        if [[ " ${extensions[$dir]} " =~ " ${ext} " ]]; then
+          mv "$file" "$dir"
+          moved=true
+          break
+        fi
+      done
+      if [ "$moved" = false ]; then
+        mv "$file" "Others"
+      fi
     fi
   fi
 done
