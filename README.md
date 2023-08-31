@@ -1,12 +1,24 @@
 # file-organiser
 
+## Introduction
+
 Simple script(s) to organise files in their respective folders.
 
 Credit for python file: https://www.youtube.com/watch?v=te3dabZ1Yts
 
 from which I took inspiration to create bash script. Might work on a powershell or batch file for windows
 
-Notes:
+## File extensions supported
+
+|  Folder   | Extensions                                                                |
+| :-------: | :------------------------------------------------------------------------ |
+|  Coding   | .sql, .yaml, .yml, .js, .ts, .c, .html, .xml, .json                       |
+| Documents | .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt, .pdf, .odt, .ods, .odp, .csv |
+|  Images   | .jpg, .jpeg, .png                                                         |
+|   Music   | .mp3, .wav, .aac                                                          |
+|  Videos   | .mp4, .mpeg, .mkv                                                         |
+
+## How to Run:
 
 - For organise.py file, you need to install python 3 (duh!)
 

@@ -24,8 +24,8 @@ video_extensions = ['.mp4', '.mpeg', '.mkv']
 document_extensions = ['.doc', '.docx', '.ppt', '.pptx',
                        '.xls', '.xlsx', '.txt', '.pdf', '.odt', '.ods', '.odp', '.csv']
 music_extensions = ['.mp3', '.wav', '.aac']
-coding_extensions = ['.sql', '.yaml', '.yml', '.js',
-                     '.ts', '.py', '.c', '.html', '.xml' '.json']
+coding_extensions = ['.sql', '.yaml', '.yml',
+                     '.js', '.ts', '.c', '.html', '.xml', '.json']
 
 # Set untouchable files
 os_files = [".DS_Store", ".directory"]
