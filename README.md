@@ -20,6 +20,8 @@ from which I took inspiration to create bash script. I also went ahead and creat
 
 ## How to Run:
 
+- Download the release v1.0.0 and extract the contents of it in the folder you wish to organise.
+
 - For organise.py file, you need to install python 3 (duh!)
 
   Then Open a terminal window, navigate to the directory where file is present, and issue following command `python organise.py`
