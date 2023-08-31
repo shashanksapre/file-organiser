@@ -10,6 +10,8 @@ Notes:
 
 - For organise.py file, you need to install python 3 (duh!)
 
+  Then Open a terminal window, navigate to the directory where file is present, and issue following command `python organise.py`
+
 - For organise.sh file, you need to give permission to it for execution:
 
   1. Either from File Manager:
