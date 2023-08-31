@@ -29,7 +29,7 @@ coding_extensions = ['.sql', '.yaml', '.yml',
 
 # Set untouchable files
 os_files = [".DS_Store", ".directory"]
-script_files = [".py", ".sh"]
+script_files = [".py", ".sh", ".ps1"]
 
 # Iterate through files
 for file in os.listdir(cwd):
