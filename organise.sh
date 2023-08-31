@@ -40,11 +40,12 @@ os_files=(".DS_Store" ".directory")
 script_files=("py" "sh")
 
 # Iterate through files
-for file in *; do 
+for file in *; do
+  # Grab extension of files
+  lower=`echo $file | awk '{print tolower($0)}'`
+  ext=${lower##*.}
   # Skip folders/directories and os specific files
-  if [ -f "$file" ] && ! [[ " ${os_files[*]} " =~ " ${file} " ]] && ! [[ " ${script_files[*]} " =~ " ${file##*.} " ]]; then
-    # Grab extension of files
-    ext=${file##*.}
+  if [ -f "$file" ] && ! [[ " ${os_files[*]} " =~ " ${file} " ]] && ! [[ " ${script_files[*]} " =~ " ${ext} " ]]; then
     # Move file into appropriate folder/directory
     if [[ " ${image_extensions[*]} " =~ " ${ext} " ]]; then
       mv "$file" "Images"
