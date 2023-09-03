@@ -32,11 +32,11 @@ from which I took inspiration to create bash script. I also went ahead and creat
 
      1.a. Right click on file and click on Properties
 
-     ![Alt text](/assets/properties.png)
+     ![Alt text](assets/properties.png)
 
      1.b. Go to Permissions Tab and check 'Is executable'
 
-     ![Alt text](/assets/permissions.png)
+     ![Alt text](assets/permissions.png)
 
      1.c. Click on OK.
 
@@ -48,6 +48,6 @@ from which I took inspiration to create bash script. I also went ahead and creat
 
 - For organise.ps1 file you can simply right-click on the file and click on 'Run with Powershell'
 
-  ![Alt text](/assets/powershell-1.png)
+  ![Alt text](assets/powershell-1.png)
 
   or open a powershell window, navigate to the file, and execute the command `.\organise.ps1`
